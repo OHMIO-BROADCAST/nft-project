@@ -1,0 +1,5 @@
+0xb11bd8c4467a1830bf54f4ed6d1de1278f04ff48 deployer
+wallet mia 0xa82f7740D6411a538983C81b34E75500A3475dA6
+
+
+direaccion de contrato deployado: 0xa3CA5693b8f99CD395778d974a263D115d28462e
