@@ -20,13 +20,13 @@ const main = async () => {
   const yourCollectible = await ethers.getContract("ArquitectosDelUniverso", deployer);
 
   const leon1 = {
-    "description": "El mago del cannabis está aqui para ayudarte en el camino del autoconocimiento y la contemplación.",
+    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "",
-    "name": "Cannabis Mage - Kusho #1",
+    "image": "https://i.ibb.co/JdgS2m0/nft1.png",
+    "name": "Galileo Galilei",
     "attributes": [
        {
-         "trait_type": "Dry Flower",
+         "trait_type": "Area del conocimiento",
          "value": "Fisica, Filosofia y Matemática"
        },
        {
@@ -52,7 +52,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/Lr8xpRz/nft2.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Isaac Newton",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -81,7 +81,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/mCqfbtn/nft3.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Nicolas Copernico",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -110,7 +110,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/vqn1bQd/nft4.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Sistema Solar",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -140,7 +140,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/H7yRZCn/nft5.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Julio Verne",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
@@ -171,7 +171,7 @@ const main = async () => {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
     "image": "https://i.ibb.co/VxzYyc7/nft6.png",
-    "name": "Cannabis Mage - Kusho #1",
+    "name": "Submarino Julio Verne",
     "attributes": [
        {
          "trait_type": "Area del conocimiento",
