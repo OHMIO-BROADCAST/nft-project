@@ -1,4 +1,4 @@
-pragma solidity >=0.6.0 <0.7.0;
+pragma solidity >=0.6.0 <=0.8.4;
 //SPDX-License-Identifier: MIT
 
 //import "hardhat/console.sol";
@@ -9,12 +9,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 // GET LISTED ON OPENSEA: https://testnets.opensea.io/get-listed/step-two
 
-contract ArquitectosDelUniverso is ERC721, Ownable {
+contract Botero is ERC721, Ownable {
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  constructor() public ERC721("ArquitectosDelUniverso", "ADU") {
+  constructor() public ERC721("Botero", "BTRO") {
     _setBaseURI("https://ipfs.io/ipfs/");
   }
 

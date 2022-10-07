@@ -12,12 +12,12 @@ const delayMS = 1000 //sometimes xDAI needs a 6000ms break lol 😅
 const main = async () => {
 
   // ADDRESS TO MINT TO:
-  const toAddress = "0xa82f7740D6411a538983C81b34E75500A3475dA6"
+  const toAddress = "0xCA572D590c58b54b960779975fd4B2FCDdba72d7"
 
   console.log("\n\n 🎫 Minting to "+toAddress+"...\n");
 
   const { deployer } = await getNamedAccounts();
-  const yourCollectible = await ethers.getContract("ArquitectosDelUniverso", deployer);
+  const yourCollectible = await ethers.getContract("Botero", deployer);
 
   const leon1 = {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
@@ -349,7 +349,7 @@ const main = async () => {
 
   await sleep(delayMS)
 
-  console.log("Transferring Ownership of ArquitectosDelUniverso to "+toAddress+"...")
+  console.log("Transferring Ownership of Botero to "+toAddress+"...")
 
   await yourCollectible.transferOwnership(toAddress)
 

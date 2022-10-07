@@ -9,8 +9,11 @@ require("hardhat-deploy");
 
 require("@eth-optimism/hardhat-ovm");
 require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils;
+
+
 
 /*
       📡 This is where you configure your deploy configuration for 🏗 scaffold-eth
@@ -46,7 +49,11 @@ module.exports = {
   // REACT_APP_PROVIDER=https://dai.poa.network in packages/react-app/.env
   // (then your frontend will talk to your contracts on the live network!)
   // (you will need to restart the `yarn run start` dev server after editing the .env)
-
+  etherscan: {
+    apiKey: {
+      polygonMumbai: 'FAC9GI893NPBMFMC8VQGDERX35G5VQRGDJ'
+    }
+  },
   networks: {
     localhost: {
       url: "http://localhost:8545",
@@ -56,31 +63,31 @@ module.exports = {
       */
     },
     rinkeby: {
-      url: "https://rinkeby.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
+      url: "https://rinkeby.infura.io/v3/6ade7a8e70b6a5f12ba766bbe85547e7", // <---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     kovan: {
-      url: "https://kovan.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
+      url: "https://kovan.infura.io/v3/6ade7a8e70b6a5f12ba766bbe85547e7", // <---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     mainnet: {
-      url: "https://mainnet.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
+      url: "https://mainnet.infura.io/v3/6ade7a8e70b6a5f12ba766bbe85547e7", // <---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     ropsten: {
-      url: "https://ropsten.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
+      url: "https://ropsten.infura.io/v3/6ade7a8e70b6a5f12ba766bbe85547e7", // <---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     goerli: {
-      url: "https://goerli.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
+      url: "https://goerli.infura.io/v3/6ade7a8e70b6a5f12ba766bbe85547e7", // <---- YOUR INFURA ID! (or it won't work)
       accounts: {
         mnemonic: mnemonic(),
       },
@@ -488,7 +495,7 @@ task("send", "Send ETH")
       ).toHexString(),
       nonce: await fromSigner.getTransactionCount(),
       gasPrice: parseUnits(
-        taskArgs.gasPrice ? taskArgs.gasPrice : "1.001",
+        taskArgs.gasPrice ? taskArgs.gasPrice : "1.01",
         "gwei"
       ).toHexString(),
       gasLimit: taskArgs.gasLimit ? taskArgs.gasLimit : 24000,

@@ -12,42 +12,78 @@ const delayMS = 1000 //sometimes xDAI needs a 6000ms break lol 😅
 const main = async () => {
 
   // ADDRESS TO MINT TO:
-  const toAddress = "0xa82f7740D6411a538983C81b34E75500A3475dA6"
+  const toAddress = "0xCA572D590c58b54b960779975fd4B2FCDdba72d7"
 
   console.log("\n\n 🎫 Minting to "+toAddress+"...\n");
 
   const { deployer } = await getNamedAccounts();
-  const yourCollectible = await ethers.getContract("ArquitectosDelUniverso", deployer);
+  const yourCollectible = await ethers.getContract("Botero", deployer);
 
-  const leon1 = {
-    "description": "El mago del cannabis está aqui para ayudarte en el camino del autoconocimiento y la contemplación.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "",
-    "name": "Cannabis Mage - Kusho #1",
+  const cbad = {
+    "description": "Esta es la escultura de Botero CBat, realizada en el año de 2007.",
+    "external_url": "https://i.ibb.co/wsYvzNG/28691a72-533b-4d36-aeb0-072dc04231ba.jpg",// <-- this can link to a page for the specific file too
+    "image": "https://i.ibb.co/wsYvzNG/28691a72-533b-4d36-aeb0-072dc04231ba.jpg",
+    "name": "CBad - Fernando Botero",
     "attributes": [
        {
-         "trait_type": "Dry Flower",
-         "value": "Fisica, Filosofia y Matemática"
+         "trait_type": "Material",
+         "value": "Bronze (patine brune)"
        },
        {
-         "trait_type": "Epoca",
-         "value": 1600
+         "trait_type": "Altura (cm)",
+         "value": 22
        },
        {
-         "trait_type": "Salas de acceso",
-         "value": 42
-       }
+        "trait_type": "Autor",
+        "value": "Fernando Botero"
+       },
+       {
+         "trait_type": "Ancho (cm)",
+         "value": 18
+       },
+       {
+         "trait_type": "Profundo (cm)",
+         "value": 65
+       },
+       {
+        "trait_type": "Material",
+        "value": "Bronze (patine brune)"
+      },
+      {
+        "trait_type": "Año",
+        "value": 2007
+      },
+      {
+        "trait_type": "Certificado",
+        "value": true
+      },
+      {
+        "trait_type": "Modelo 3D",
+        "value": 'URL al 3D'
+      },
+      {
+        "trait_type": "Imagenes Fotográficas 2022",
+        "value": 'URL al fotos de este año'
+      },
+      {
+        "trait_type": "Exhibición",
+        "value": true
+      },
+      {
+        "trait_type": "Ubicación",
+        "value": ' Bel-Air Fine Art, Ginebra'
+      },
     ]
   }
-  console.log("Uploading Galileo Galilei...")
-  const uploadedleon1 = await ipfs.add(JSON.stringify(leon1))
+  console.log("Uploading Botero Cbad...")
+  const botero1 = await ipfs.add(JSON.stringify(cbad))
 
-  console.log("Minting Galileo Galilei with IPFS hash ("+uploadedleon1.path+")")
-  await yourCollectible.mintItem(toAddress,uploadedleon1.path,{gasLimit:10000000})
+  console.log("Minting Botero Cbad with IPFS hash ("+botero1.path+")")
+  await yourCollectible.mintItem(toAddress,botero1.path,{gasLimit:10000000})
 
 
   await sleep(delayMS)
-
+/* 
   const leon2 = {
     "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
     "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
@@ -191,7 +227,7 @@ const main = async () => {
   const uploadeleon6 = await ipfs.add(JSON.stringify(leon6))
 
   console.log("Minting Submarino Julio Verne with IPFS hash ("+uploadeleon6.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon6.path,{gasLimit:10000000})
+  await yourCollectible.mintItem(toAddress,uploadeleon6.path,{gasLimit:10000000}) */
  /* 
 
 
@@ -349,7 +385,7 @@ const main = async () => {
 
   await sleep(delayMS)
 
-  console.log("Transferring Ownership of ArquitectosDelUniverso to "+toAddress+"...")
+  console.log("Transferring Ownership of Botero to "+toAddress+"...")
 
   await yourCollectible.transferOwnership(toAddress)
 
@@ -365,7 +401,7 @@ const main = async () => {
 
 
   //const secondContract = await deploy("SecondContract")
-
+Botero
   // const exampleToken = await deploy("ExampleToken")
   // const examplePriceOracle = await deploy("ExamplePriceOracle")
   // const smartContractWallet = await deploy("SmartContractWallet",[exampleToken.address,examplePriceOracle.address])

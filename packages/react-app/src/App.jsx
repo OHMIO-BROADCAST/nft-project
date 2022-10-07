@@ -194,28 +194,28 @@ function App(props) {
   ]);
 
   // keep track of a variable from the contract in the local React state:
-  const balance = useContractReader(readContracts, "ArquitectosDelUniverso", "balanceOf", [address]);
+  const balance = useContractReader(readContracts, "ObraBotero", "balanceOf", [address]);
   console.log("🤗 balance:", balance);
 
   // 📟 Listen for broadcast events
-  const transferEvents = useEventListener(readContracts, "ArquitectosDelUniverso", "Transfer", localProvider, 1);
+  const transferEvents = useEventListener(readContracts, "ObraBotero", "Transfer", localProvider, 1);
   console.log("📟 Transfer events:", transferEvents);
 
   //
   // 🧠 This effect will update yourCollectibles by polling when your balance changes
   //
   const yourBalance = balance && balance.toNumber && balance.toNumber();
-  const [yourCollectibles, setArquitectosDelUniverso] = useState();
+  const [yourCollectibles, setObraBotero] = useState();
 
   useEffect(() => {
-    const updateArquitectosDelUniverso = async () => {
+    const updateObraBotero = async () => {
       const collectibleUpdate = [];
       for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
         try {
           console.log("Getting token index", tokenIndex);
-          const tokenId = await readContracts.ArquitectosDelUniverso.tokenOfOwnerByIndex(address, tokenIndex);
+          const tokenId = await readContracts.ObraBotero.tokenOfOwnerByIndex(address, tokenIndex);
           console.log("tokenId", tokenId);
-          const tokenURI = await readContracts.ArquitectosDelUniverso.tokenURI(tokenId);
+          const tokenURI = await readContracts.ObraBotero.tokenURI(tokenId);
           console.log("tokenURI", tokenURI);
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
@@ -234,9 +234,9 @@ function App(props) {
           console.log(e);
         }
       }
-      setArquitectosDelUniverso(collectibleUpdate);
+      setObraBotero(collectibleUpdate);
     };
-    updateArquitectosDelUniverso();
+    updateObraBotero();
   }, [address, yourBalance]);
 
   /*
@@ -434,7 +434,7 @@ function App(props) {
               }}
               to="/"
             >
-              ArquitectosDelUniverso
+              ObraBotero
             </Link>
           </Menu.Item>
           <Menu.Item key="/transfers">
@@ -528,7 +528,7 @@ function App(props) {
                         <Button
                           onClick={() => {
                             console.log("writeContracts", writeContracts);
-                            tx(writeContracts.ArquitectosDelUniverso.transferFrom(address, transferToAddresses[id], id));
+                            tx(writeContracts.ObraBotero.transferFrom(address, transferToAddresses[id], id));
                           }}
                         >
                           Transfer
@@ -635,7 +635,7 @@ function App(props) {
           </Route>
           <Route path="/debugcontracts">
             <Contract
-              name="ArquitectosDelUniverso"
+              name="ObraBotero"
               signer={userSigner}
               provider={localProvider}
               address={address}
