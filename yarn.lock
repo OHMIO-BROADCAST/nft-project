@@ -2517,10 +2517,10 @@
     "@types/sinon-chai" "^3.2.3"
     "@types/web3" "1.0.19"
 
-"@openzeppelin/contracts@^3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-3.2.0.tgz#3e6b3a7662d8ed64271ade96ef42655db983fd9d"
-  integrity sha512-bUOmkSoPkjnUyMiKo6RYnb0VHBk5D9KKDAgNLzF41aqAM3TeE0yGdFF5dVRcV60pZdJLlyFT/jjXIZCWyyEzAQ==
+"@openzeppelin/contracts@^4.8.0-rc.2":
+  version "4.8.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.8.0-rc.2.tgz#52343ab70bc24e75cc10e4bc1dd6dedfe557642c"
+  integrity sha512-nDCPHAfkg4l/LhuPQSCjehGGQ8SPlsIuYVmr0weT9dLyXCAr3gAfCe27wZG7Zb1G90Yfgaz5xRXlYY/cIBLCVw==
 
 "@protobufjs/utf8@^1.1.0":
   version "1.1.0"

@@ -4,8 +4,16 @@ const chalk = require("chalk");
 const { config, ethers } = require("hardhat");
 const { utils } = require("ethers");
 const R = require("ramda");
+
+const projectId = '2FmUhj741oa51XNDW29eBxI3rv2';   // <---------- your Infura Project ID
+const projectSecret = '6ade7a8e70b6a5f12ba766bbe85547e7';  // <---------- your Infura Secret
+const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
+
+
 const ipfsAPI = require('ipfs-http-client');
-const ipfs = ipfsAPI({host: 'ipfs.infura.io', port: '5001', protocol: 'https'})
+const ipfs = ipfsAPI({host: 'ipfs.infura.io', port: '5001', protocol: 'https', headers: {
+  authorization: auth,
+}})
 
 const delayMS = 1000 //sometimes xDAI needs a 6000ms break lol 😅
 
@@ -17,377 +25,203 @@ const main = async () => {
   console.log("\n\n 🎫 Minting to "+toAddress+"...\n");
 
   const { deployer } = await getNamedAccounts();
-  const yourCollectible = await ethers.getContract("Botero", deployer);
+  const yourCollectible = await ethers.getContract("OHMIOBox", deployer);
 
-  const cbad = {
-    "description": "Esta es la escultura de Botero CBat, realizada en el año de 2007.",
-    "external_url": "https://i.ibb.co/wsYvzNG/28691a72-533b-4d36-aeb0-072dc04231ba.jpg",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/wsYvzNG/28691a72-533b-4d36-aeb0-072dc04231ba.jpg",
-    "name": "CBad - Fernando Botero",
+  const ohmiobox1 = {
+    "description": "This is an OHMIO Box, is the key of the future and your tool into the OHMIO Universe.",
+    "external_url": "https://nft.ohmiobroadcast.io",// <-- this can link to a page for the specific file too
+    "image": "https://store4.gofile.io/download/fdc7e7bb-89ce-4634-9a5d-1f22b8695642/OHMIOBOX_10001-0200.mp4",
+    "name": "OHMIO Box",
     "attributes": [
-       {
-         "trait_type": "Material",
-         "value": "Bronze (patine brune)"
-       },
-       {
-         "trait_type": "Altura (cm)",
-         "value": 22
-       },
-       {
-        "trait_type": "Autor",
-        "value": "Fernando Botero"
-       },
-       {
-         "trait_type": "Ancho (cm)",
-         "value": 18
-       },
-       {
-         "trait_type": "Profundo (cm)",
-         "value": 65
-       },
-       {
-        "trait_type": "Material",
-        "value": "Bronze (patine brune)"
-      },
       {
-        "trait_type": "Año",
-        "value": 2007
-      },
+        "trait_type": "Antenna",
+        "value": "Noise"
+       },
+       {
+        "trait_type": "Body",
+        "value": "Rf Spectrum"
+       },
+       {
+        "trait_type": "Cord",
+        "value": "Multiware"
+       },
+       {
+        "trait_type": "Keypad",
+        "value": "Rayzer"
+       },
+       {
+        "trait_type": "Waveform",
+        "value": "Square"
+       }
+    ]
+  }
+
+
+
+  console.log("Uploading ohmiobox1...")
+  const ohmiob1 = await ipfs.add(JSON.stringify(ohmiobox1))
+
+  console.log("Minting ohmiobox1 with IPFS hash ("+ohmiob1.path+")")
+  await yourCollectible.mintItem(toAddress,ohmiob1.path,{gasLimit:10000000})
+
+
+  await sleep(delayMS) 
+
+  
+  const ohmiobox2 = {
+    "description": "This is an OHMIO Box, is the key of the future and your tool into the OHMIO Universe.",
+    "external_url": "https://nft.ohmiobroadcast.io",// <-- this can link to a page for the specific file too
+    "image": "https://store4.gofile.io/download/fdc7e7bb-89ce-4634-9a5d-1f22b8695642/OHMIOBOX_10001-0200.mp4",
+    "name": "OHMIO Box",
+    "attributes": [
       {
-        "trait_type": "Certificado",
-        "value": true
-      },
+        "trait_type": "Antenna",
+        "value": "Noise"
+       },
+       {
+        "trait_type": "Body",
+        "value": "Rf Spectrum"
+       },
+       {
+        "trait_type": "Cord",
+        "value": "Multiware"
+       },
+       {
+        "trait_type": "Keypad",
+        "value": "Rayzer"
+       },
+       {
+        "trait_type": "Waveform",
+        "value": "Square"
+       }
+    ]
+  }
+  console.log("Uploading ohmiobox2...")
+  const ohmiob2 = await ipfs.add(JSON.stringify(ohmiobox2))
+
+  console.log("Minting ohmiobox2 with IPFS hash ("+ohmiob2.path+")")
+  await yourCollectible.mintItem(toAddress,ohmiob2.path,{gasLimit:10000000})
+
+
+  await sleep(delayMS)
+
+  const ohmiobox3 = {
+    "description": "This is an OHMIO Box, is the key of the future and your tool into the OHMIO Universe.",
+    "external_url": "https://nft.ohmiobroadcast.io",// <-- this can link to a page for the specific file too
+    "image": "https://store4.gofile.io/download/fdc7e7bb-89ce-4634-9a5d-1f22b8695642/OHMIOBOX_10001-0200.mp4",
+    "name": "OHMIO Box",
+    "attributes": [
       {
-        "trait_type": "Modelo 3D",
-        "value": 'URL al 3D'
-      },
+        "trait_type": "Antenna",
+        "value": "Noise"
+       },
+       {
+        "trait_type": "Body",
+        "value": "Rf Spectrum"
+       },
+       {
+        "trait_type": "Cord",
+        "value": "Multiware"
+       },
+       {
+        "trait_type": "Keypad",
+        "value": "Rayzer"
+       },
+       {
+        "trait_type": "Waveform",
+        "value": "Square"
+       }
+    ]
+  }
+  console.log("Uploading ohmiobox3...")
+  const ohmiob3 = await ipfs.add(JSON.stringify(ohmiobox3))
+
+  console.log("Minting ohmiobox3 with IPFS hash ("+ohmiob3.path+")")
+  await yourCollectible.mintItem(toAddress,ohmiob3.path,{gasLimit:10000000})
+
+  await sleep(delayMS)
+
+
+  const ohmiobox4 = {
+    "description": "This is an OHMIO Box, is the key of the future and your tool into the OHMIO Universe.",
+    "external_url": "https://nft.ohmiobroadcast.io",// <-- this can link to a page for the specific file too
+    "image": "https://store4.gofile.io/download/fdc7e7bb-89ce-4634-9a5d-1f22b8695642/OHMIOBOX_10001-0200.mp4",
+    "name": "OHMIO Box",
+    "attributes": [
       {
-        "trait_type": "Imagenes Fotográficas 2022",
-        "value": 'URL al fotos de este año'
-      },
+        "trait_type": "Antenna",
+        "value": "Noise"
+       },
+       {
+        "trait_type": "Body",
+        "value": "Rf Spectrum"
+       },
+       {
+        "trait_type": "Cord",
+        "value": "Multiware"
+       },
+       {
+        "trait_type": "Keypad",
+        "value": "Rayzer"
+       },
+       {
+        "trait_type": "Waveform",
+        "value": "Square"
+       }
+    ]
+  }
+  console.log("Uploading ohmiobox4...")
+  const ohmiob4 = await ipfs.add(JSON.stringify(ohmiobox4))
+
+  console.log("Minting ohmiobox4 with IPFS hash ("+ohmiob4.path+")")
+  await yourCollectible.mintItem(toAddress,ohmiob4.path,{gasLimit:10000000})
+
+  await sleep(delayMS)
+
+
+  const ohmiobox5 = {
+    "description": "This is an OHMIO Box, is the key of the future and your tool into the OHMIO Universe.",
+    "external_url": "https://nft.ohmiobroadcast.io",// <-- this can link to a page for the specific file too
+    "image": "https://store4.gofile.io/download/fdc7e7bb-89ce-4634-9a5d-1f22b8695642/OHMIOBOX_10001-0200.mp4",
+    "name": "OHMIO Box",
+    "attributes": [
       {
-        "trait_type": "Exhibición",
-        "value": true
-      },
-      {
-        "trait_type": "Ubicación",
-        "value": ' Bel-Air Fine Art, Ginebra'
-      },
-    ]
-  }
-  console.log("Uploading Botero Cbad...")
-  const botero1 = await ipfs.add(JSON.stringify(cbad))
-
-  console.log("Minting Botero Cbad with IPFS hash ("+botero1.path+")")
-  await yourCollectible.mintItem(toAddress,botero1.path,{gasLimit:10000000})
-
-
-  await sleep(delayMS)
-/* 
-  const leon2 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/Lr8xpRz/nft2.png",
-    "name": "Cannabis Mage - Kusho #1",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "Fisica, Filosofia y Matemática"
+        "trait_type": "Antenna",
+        "value": "Noise"
        },
        {
-         "trait_type": "Epoca",
-         "value": 1700
+        "trait_type": "Body",
+        "value": "Rf Spectrum"
        },
        {
-         "trait_type": "Salas de acceso",
-         "value": 42
+        "trait_type": "Cord",
+        "value": "Multiware"
+       },
+       {
+        "trait_type": "Keypad",
+        "value": "Rayzer"
+       },
+       {
+        "trait_type": "Waveform",
+        "value": "Square"
        }
     ]
   }
-  console.log("Uploading Isaac Newton...")
-  const uploadedleon2 = await ipfs.add(JSON.stringify(leon2))
+  console.log("Uploading ohmiobox5...")
+  const ohmiob5 = await ipfs.add(JSON.stringify(ohmiobox5))
 
-  console.log("Minting Isaac Newton with IPFS hash ("+uploadedleon2.path+")")
-  await yourCollectible.mintItem(toAddress,uploadedleon2.path,{gasLimit:10000000})
-
-
-  await sleep(delayMS)
-
-  const leon3 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/mCqfbtn/nft3.png",
-    "name": "Cannabis Mage - Kusho #1",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "Fisica, Filosofia y Matemática"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": 1500
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 42
-       }
-    ]
-  }
-  console.log("Uploading Nicolas Copernico...")
-  const uploadedleon3 = await ipfs.add(JSON.stringify(leon3))
-
-  console.log("Minting Nicolas Copernico with IPFS hash ("+uploadedleon3.path+")")
-  await yourCollectible.mintItem(toAddress,uploadedleon3.path,{gasLimit:10000000})
-
-
-  await sleep(delayMS)
-
-  const leon4 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/vqn1bQd/nft4.png",
-    "name": "Cannabis Mage - Kusho #1",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "Astrofisica"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": 0
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 42
-       }
-    ]
-  }
-  console.log("Uploading Sistema Solar...")
-  const uploadedleon4 = await ipfs.add(JSON.stringify(leon4))
-
-  console.log("Minting Sistema Solar with IPFS hash ("+uploadedleon4.path+")")
-  await yourCollectible.mintItem(toAddress,uploadedleon4.path,{gasLimit:10000000})
-
+  console.log("Minting ohmiobox5 with IPFS hash ("+ohmiob5.path+")")
+  await yourCollectible.mintItem(toAddress,ohmiob5.path,{gasLimit:10000000})
 
   await sleep(delayMS)
 
 
-  const leon5 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/H7yRZCn/nft5.png",
-    "name": "Cannabis Mage - Kusho #1",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "Literatura"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": 1840
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 38
-       }
-    ]
-  }
-  console.log("Uploading Julio Verne...")
-  const uploadedleon5 = await ipfs.add(JSON.stringify(leon5))
 
-  console.log("Minting Julio Verne with IPFS hash ("+uploadedleon5.path+")")
-  await yourCollectible.mintItem(toAddress,uploadedleon5.path,{gasLimit:10000000})
+  // TRANSFERRING OWNERSHIP OF THE CONTRACT
 
+  console.log("Transferring Ownership of OHMIOBOX to "+toAddress+"...")
 
-
-  await sleep(delayMS)
-
-
-  const leon6 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/VxzYyc7/nft6.png",
-    "name": "Cannabis Mage - Kusho #1",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "Literatura"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": 1840
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 22
-       }
-    ]
-  }
-  console.log("Uploading Submarino Julio Verne...")
-  const uploadeleon6 = await ipfs.add(JSON.stringify(leon6))
-
-  console.log("Minting Submarino Julio Verne with IPFS hash ("+uploadeleon6.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon6.path,{gasLimit:10000000}) */
- /* 
-
-
-  await sleep(delayMS)
-
-
-  const leon7 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/d2vy8zp/7.jpg",
-    "name": "Leon Galactico #6",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "pink"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": "googly"
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 22
-       }
-    ]
-  }
-  console.log("Uploading leon7...")
-  const uploadeleon7 = await ipfs.add(JSON.stringify(leon7))
-
-  console.log("Minting leon7 with IPFS hash ("+uploadeleon7.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon7.path,{gasLimit:10000000})
-
-
-
-  await sleep(delayMS)
-
-
-  const leon8 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/vYdf1kF/8.jpg",
-    "name": "Leon Galactico #6",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "pink"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": "googly"
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 22
-       }
-    ]
-  }
-  console.log("Uploading leon8...")
-  const uploadeleon8 = await ipfs.add(JSON.stringify(leon8))
-
-  console.log("Minting leon8 with IPFS hash ("+uploadeleon8.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon8.path,{gasLimit:10000000})
-
-
-  const leon9 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/fX4KY1F/9.jpg",
-    "name": "Leon Galactico #6",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "pink"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": "googly"
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 22
-       }
-    ]
-  }
-  console.log("Uploading leon9...")
-  const uploadeleon9 = await ipfs.add(JSON.stringify(leon9))
-
-  console.log("Minting leon9 with IPFS hash ("+uploadeleon9.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon9.path,{gasLimit:10000000})
-
-
-
-  await sleep(delayMS)
-
-
-  const leon10 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/7bsphJr/10.jpg",
-    "name": "Leon Galactico #6",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "pink"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": "googly"
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 22
-       }
-    ]
-  }
-  console.log("Uploading leon10...")
-  const uploadeleon10 = await ipfs.add(JSON.stringify(leon10))
-
-  console.log("Minting leon10 with IPFS hash ("+uploadeleon10.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon10.path,{gasLimit:10000000})
-
-
- await sleep(delayMS)
-
-  const leon11 = {
-    "description": "La historia está compuesta de ideas que nacieron en algunas de las mentes más brillantes, el arte y la ciencia se hacen uno para ser el testamento de la creación del hombre en su busqueda interminable de si mismo y su lugar en la naturaleza.",
-    "external_url": "https://fidubit.global",// <-- this can link to a page for the specific file too
-    "image": "https://i.ibb.co/LpBvm7W/11.jpg",
-    "name": "Leon Galactico #6",
-    "attributes": [
-       {
-         "trait_type": "Area del conocimiento",
-         "value": "pink"
-       },
-       {
-         "trait_type": "Epoca",
-         "value": "googly"
-       },
-       {
-         "trait_type": "Salas de acceso",
-         "value": 22
-       }
-    ]
-  }
-  console.log("Uploading leon11...")
-  const uploadeleon11 = await ipfs.add(JSON.stringify(leon11))
-
-  console.log("Minting leon11 with IPFS hash ("+uploadeleon11.path+")")
-  await yourCollectible.mintItem(toAddress,uploadeleon11.path,{gasLimit:10000000}) */
-
-
-
-  await sleep(delayMS)
-
-
-  await sleep(delayMS)
-
-  console.log("Transferring Ownership of Botero to "+toAddress+"...")
-
-  await yourCollectible.transferOwnership(toAddress)
+  await yourCollectible.transferOwnership(toAddress,{gasLimit:10000000})
 
   await sleep(delayMS)
 
@@ -401,7 +235,7 @@ const main = async () => {
 
 
   //const secondContract = await deploy("SecondContract")
-Botero
+
   // const exampleToken = await deploy("ExampleToken")
   // const examplePriceOracle = await deploy("ExamplePriceOracle")
   // const smartContractWallet = await deploy("SmartContractWallet",[exampleToken.address,examplePriceOracle.address])

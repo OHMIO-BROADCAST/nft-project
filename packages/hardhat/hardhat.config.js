@@ -100,14 +100,14 @@ module.exports = {
       },
     },
     mumbai: {
-      url: "https://rpc-mumbai.maticvigil.com/",
+      url: "https://matic-mumbai.chainstacklabs.com	",
       gasPrice: 1100000000,
       accounts: {
         mnemonic: mnemonic(),
       },
     },
     matic: {
-      url: "https://rpc-mainnet.maticvigil.com/",
+      url: "https://rpc-mainnet.maticvigil.com/v1/0b4154758b0efb64e52f1c65a449ac86158146fe/",
       gasPrice: 1100000000,
       accounts: {
         mnemonic: mnemonic(),
@@ -200,7 +200,7 @@ module.exports = {
     ],
   },
   ovm: {
-    solcVersion: "0.7.6",
+    solcVersion: "0.8.0",
   },
   namedAccounts: {
     deployer: {

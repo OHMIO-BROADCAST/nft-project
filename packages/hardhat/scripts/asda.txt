@@ -2,4 +2,4 @@
 wallet mia 0xCA572D590c58b54b960779975fd4B2FCDdba72d7
 
 
-direaccion de contrato deployado: 0xa3CA5693b8f99CD395778d974a263D115d28462e
+direaccion de contrato deployado: 
