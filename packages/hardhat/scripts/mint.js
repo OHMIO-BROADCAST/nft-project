@@ -25,11 +25,12 @@ const main = async () => {
   console.log("\n\n 🎫 Minting to "+toAddress+"...\n");
 
   const { deployer } = await getNamedAccounts();
+
   const yourCollectible = await ethers.getContract("MasterGrow", deployer);
 
   //primeros 10
 
-  /* const mastergrow1 = {
+  const mastergrow1 = {
     "name": "MasterGrow_1",
     "description": "MasterGrow",
     "image": "https://i.ibb.co/gznjK7P/Master-Grow-1.jpg",
@@ -253,7 +254,7 @@ const main = async () => {
   await yourCollectible.mintItem(toAddress,master5.path,{gasLimit:10000000})
 
   await sleep(delayMS)
-
+/*
   const mastergrow6 = {
     "name": "MasterGrow_6",
     "description": "MasterGrow",
@@ -654,7 +655,7 @@ const main = async () => {
   console.log("Minting mastergrow14 with IPFS hash ("+master14.path+")")
   await yourCollectible.mintItem(toAddress,master14.path,{gasLimit:10000000})
 
-  await sleep(delayMS)*/
+  await sleep(delayMS)
 
 
   const mastergrow15 = {
@@ -919,12 +920,12 @@ const main = async () => {
   console.log("Minting mastergrow20 with IPFS hash ("+master20.path+")")
   await yourCollectible.mintItem(toAddress,master20.path,{gasLimit:10000000})
 
-  await sleep(delayMS)
+  await sleep(delayMS)*/
 
 
   // TRANSFERRING OWNERSHIP OF THE CONTRACT
 
-  console.log("Transferring Ownership of OHMIOBOX to "+toAddress+"...")
+  console.log("Transferring Ownership of WIZARD to "+toAddress+"...")
 
   await yourCollectible.transferOwnership(toAddress,{gasLimit:10000000})
 

@@ -16,7 +16,7 @@ contract MasterGrow is ERC721URIStorage, Ownable {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  bool private revealed = false;
+  bool public revealed = false;
   string private revealUrl = "https://filebin.net/33zbgcuf4tl1xa70/notRevealed.json";
 
   constructor() public ERC721("/* MasterGrow */", "MTGR") {}
@@ -43,6 +43,11 @@ contract MasterGrow is ERC721URIStorage, Ownable {
   }
 
   function revealCollection() public {
+    if (revealed == true){
+    revealed = false;
+    } else{
     revealed = true;
+    }
   }
+
 }
