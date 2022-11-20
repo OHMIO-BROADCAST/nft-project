@@ -11,15 +11,15 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 // GET LISTED ON OPENSEA: https://testnets.opensea.io/get-listed/step-two
 
-contract OHMIOBox is ERC721URIStorage, Ownable {
+contract MasterGrow is ERC721URIStorage, Ownable {
 
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
   bool private revealed = false;
-  string private revealUrl = "https://store3.gofile.io/download/508209d9-8b73-4e41-9c9f-36ead22d382c/notRevealed.json";
+  string private revealUrl = "https://filebin.net/33zbgcuf4tl1xa70/notRevealed.json";
 
-  constructor() public ERC721("OHMIOBox", "OHMIOB") {}
+  constructor() public ERC721("/* MasterGrow */", "MTGR") {}
 
   function mintItem(address to, string memory _tokenURI)
       public
